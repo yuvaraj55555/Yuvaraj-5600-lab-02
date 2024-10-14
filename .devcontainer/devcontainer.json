@@ -1,0 +1,49 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+{
+  "name": "IS 5600 - Lab 2",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["index.html"]
+    },
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {},
+      "extensions": ["streetsidesoftware.code-spell-checker"]
+    }
+  },
+
+  // // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [3000],
+
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  },
+
+  // "build": { "dockerfile": "Dockerfile" },
+
+  // Automatically expose port 80 for development
+
+  // Make sure our nginx container's default command runs, which starts up the web server in the background.
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "npm install && npm run build",
+  "postCreateCommand": "npm run dev"
+  // "postAttachCommand": {
+  //   "server": "npm run dev"
+  // }
+
+  // Mount the custom nginx.conf and the directory to serve
+  // "mounts": [
+  //   "source=nginx/conf.d,target=/etc/nginx/conf.d,type=volume",
+  //   "source=lab,target=/usr/share/nginx/html,type=volume"
+  // ],
+  // this command will copy the contents of the workspace into the mounted volumes so that the web server can serve them (kinda seems like a hack, but it works)
+  // "postCreateCommand": "docker run --rm -v nginx_conf:/etc/nginx/conf.d -v lab_html:/usr/share/nginx/html -v ${localWorkspaceFolder}/nginx:/nginx_conf -v ${localWorkspaceFolder}/lab:/lab_html busybox sh -c 'cp -r /nginx_conf/* /etc/nginx/conf.d/ && cp -r /lab_html/* /usr/share/nginx/html/'"
+}
