@@ -1,5 +1,19 @@
 # Lab 02 | Stock Portfolio Dashboard
 
+## Table of Contents
+
+1. [Lab 02 | Stock Portfolio Dashboard](#lab-02--stock-portfolio-dashboard)
+   - [Overview](#overview)
+   - [Instructions](#instructions)
+2. [Guidance and Testing](#guidance-and-testing)
+   - [Bonus Points](#bonus-points)
+   - [Submission](#submission)
+3. [Getting Started with GitHub and Codespaces](#getting-started-with-github-and-codespaces)
+   - [Step 1: Fork the Repository](#step-1-fork-the-repository)
+   - [Step 2: Open the Repository in Codespaces](#step-2-open-the-repository-in-codespaces)
+   - [Step 3: Complete the Lab Assignment](#step-3-complete-the-lab-assignment)
+   - [Step 4: Submit Your Work via Pull Request](#step-4-submit-your-work-via-pull-request)
+
 ## Overview
 
 In this labe, you will use JavaScript, DOM manipulations and event handling to create a dashboard
@@ -17,7 +31,6 @@ The goal of this lab is to familarize you with the DOM and event handling. This 
 some of the problems which ReactJS is designed to solve.
 
 Below is a screenshot of the completed project:
-
 
 ## Instructions
 
@@ -121,9 +134,11 @@ function generateUserList(users) {
   userList.addEventListener('click', (event) => handleUserListClick(event, users));
 }
 ```
+
 Great - so now we should have a form that populates with all of the data when we click on a user from the list. Let's move on to the next step.
 
 7. For this section, we will now render the portfolio items for the user. This will have us modifying the `handleUserListClick` to call another function which will render the portfolio items. First let's make the stock data accessible to the `handleUserListClick` function. We will add a parameter to the function and pass in the stock data.
+
 ```js
 // update the call to generateUserList to pass in the stock data
 
@@ -140,7 +155,9 @@ function handleUserListClick(event, users, stocks) {
 // Finally, update the call to handleUserListClick to pass in the stock data
   userList.addEventListener('click', (event) => handleUserListClick(event, userData, stocksData));
 ```
+
 Now, let's create the `renderPortfolio` function. This function will take in a user object and render the portfolio items for the user. This function will be defined _outside_ of the DOMContentLoaded event handler.
+
 ```js
 /**
  * Renders the portfolio items for the user
@@ -169,7 +186,9 @@ function renderPortfolio(user, stocks) {
   });
 }
 ```
+
 We then need to call the `renderPortfolio` function from the `handleUserListClick` function.
+
 ```js
 /**
  * Handles the click event on the user list
@@ -181,8 +200,10 @@ function handleUserListClick(event, users, stocks) {
   renderPortfolio(user, stocks);
 }
 ```
+
 Great - so now we should have a form that populates with all of the data when we click on a user from the list, and we should have a list of portfolio items for the user. Let's move on to the next step.
 8. For this section, we will add the functionality to view the stock information when we click on the view button. We will start by creating the `viewStock` function. This function will take in a symbol and render the stock information for that symbol. We'll need to register an event listener on the view button and call the `viewStock` function when the button is clicked.
+
 ```js
 /**
  * Renders the stock information for the symbol
@@ -204,7 +225,9 @@ function viewStock(symbol, stocks) {
   }
 }
 ```
+
 And then register the `viewStock` as an event listener for the view button. Instead of registering it on each button, we will register it on the parent element and use event delegation to handle the click event.
+
 ```js
 /**
  * Handles the click event on the user list
@@ -221,9 +244,12 @@ function renderPortfolio(event, users, stocks) {
   });
 }
 ```
-9. 
-We almost have a fully functioning dashboard. Now for the last piece, we want to have the form update the user details when we modify and save the user. We also want to be able to delete a user from the list. Let's start with the delete function. We will add an event listener to the delete button that will slice the user from the user's array. Because we will need to call the `generateUserList` function after deleting the user, we will keep the delete callback in the main event handler scope, where the `stockData` and `userData` are accessible. 
+
+9.
+
+We almost have a fully functioning dashboard. Now for the last piece, we want to have the form update the user details when we modify and save the user. We also want to be able to delete a user from the list. Let's start with the delete function. We will add an event listener to the delete button that will slice the user from the user's array. Because we will need to call the `generateUserList` function after deleting the user, we will keep the delete callback in the main event handler scope, where the `stockData` and `userData` are accessible.
 Add this to the bottom of the main event handler.
+
 ```js
 ...
   // Register the event listener on the delete button
@@ -240,7 +266,9 @@ Add this to the bottom of the main event handler.
     generateUserList(userData, stocksData);
   });
 ```
+
 If you run this now, you'll see that the `.user-list` data will stack, this is because the `generateUserList` function is appending the list items to the list. We need to clear the list before we render the new list. Let's update the `generateUserList` function to clear the list before rendering the new list.
+
 ```js
 /**
  * Loops through the users and renders a ul with li elements for each user
@@ -254,7 +282,9 @@ function generateUserList(users, stocks) {
   // .. rest of function
 }
 ```
+
 Now, let's add the save functionality. We will add an event listener to the save button that will update the user details. We will keep the save callback in the main event handler scope, where the `stockData` and `userData` are accessible as well.
+
 ```js
 // Register the event listener on the save button
   saveButton.addEventListener('click', (event) => {
@@ -279,7 +309,9 @@ Now, let's add the save functionality. We will add an event listener to the save
     }
   });
   ```
+
   Now we should have a fully functioning dashboard. Let's test it out.
+
 ## Guidance and Testing
 
 1. The steps above should walk you through creating the layout to match the mockup. You can review the video walkthrough for further guidance.
@@ -304,7 +336,7 @@ Forking a repository means making a copy of it under your GitHub account. This a
 1. **Open the Repository**: Start by navigating to the GitHub repository link provided by your instructor.
 2. **Click "Fork"**: In the top-right corner, find the “Fork” button and click it.
 3. **Select Your Account**: Choose your GitHub account as the destination for the fork. Once done, you’ll be redirected to your forked copy of the repository.
-   
+
    > **Tip**: Make sure you’re logged into your GitHub account, or you won’t see the option to fork!
 
 ## Step 2: Open the Repository in Codespaces
@@ -346,15 +378,16 @@ Once you’ve completed the assignment, it’s time to submit your work. You’l
 
 And that’s it! You’ve now completed your first lab assignment using GitHub and Codespaces. Well done!
 
-
 ### Additional Steps
 
 1. Open the terminal in Codespaces.
 2. Run the following commands to install dependencies and start the development server:
+
     ```sh
     npm install
     npm run dev
     ```
+
 3. You can now view the project in the browser by clicking the "Application" port in the Ports panel.
 
 Follow the instructions in the previous sections to complete the lab.
