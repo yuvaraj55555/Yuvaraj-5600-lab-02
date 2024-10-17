@@ -316,11 +316,6 @@ Now, let's add the save functionality. We will add an event listener to the save
 
 1. The steps above should walk you through creating the layout to match the mockup. You can review the video walkthrough for further guidance.
 
-## Bonus Points
-
-1. Refactor the save button event handler to find the index of the user object in the array and update the object at that index. Then, call the `generateUserList` function to render the updated list. You can use the spread operator to create a new version of the users array with the updated user object.
-2. Refactor the `populateForm` method - we are essentially updating 6 key value pairs. Can we create an array and use a loop to update the values instead?
-
 ## Submission
 
 Once you have completed the lab, please submit your code to the Replit classroom. You can do this by clicking the "Share" button in the top right corner of the Replit editor. Then, click the "Share to Classroom" button. You should see a list of classes that you are enrolled in. Select the class that you are enrolled in and click the "Share" button. You should see a message that your code has been shared with the class. You can now close the share window.
